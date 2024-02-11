@@ -4,10 +4,11 @@ import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shopping-list/shopping-list.service";
 
 @Injectable() //In order to use a shoping list service in recipe service we use Injectable, this is done so we can send our ingredients to the shopping list
+//Note:- injectable not used for recipe services as its within the same folder
 
 export class RecipeService{
 
-    recipeSelected  = new EventEmitter<Recipe>();
+    recipeSelected  = new EventEmitter<Recipe>(); //Stores selected Recipe from recipe list (obtained from recipe-item under recipe-list)
 
     private recipes : Recipe[] = [          //This object has been defined in recipe.model.ts
     new Recipe('Burger','A juicy hamburger','https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg',[
@@ -25,10 +26,10 @@ export class RecipeService{
   constructor(private slService:ShoppingListService){}
 
   getRecipes(){
-    return this.recipes.slice();
+    return this.recipes.slice(); //Returns contents of above array recipes (slice not needed but refreshes array often)
   }
 
   addIngredientsToShoppingLIst(ingredients : Ingredient[]){
-    this.slService.addIngredients(ingredients);
+    this.slService.addIngredients(ingredients); //Uses addIngredients from shoppingListServices to add items to shopping list
   }
 }

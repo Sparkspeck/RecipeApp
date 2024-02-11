@@ -4,7 +4,7 @@ import { EventEmitter } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
 
 export class ShoppingListService{
-    ingredientsChanged = new EventEmitter<Ingredient[]>(); //Slice takes copy of Ingredient array but does not update it, this is used to refresh the array every time the service is subscribed to in shopping-list component (Can just plainly retur this.ingredients)
+    ingredientsChanged = new EventEmitter<Ingredient[]>(); //Slice takes copy of Ingredient array but does not update it, this is used to refresh the array every time the service is subscribed to in shopping-list component (Can just plainly return this.ingredients)
     private ingredients: Ingredient[]=[          //Created Ingedients model just like recipe model
     new Ingredient('Apples',5),
     new Ingredient('Tomatoes',10),
@@ -14,7 +14,7 @@ export class ShoppingListService{
     return this.ingredients.slice();
   }
 
-  addIngredient(ingredient:Ingredient){
+  addIngredient(ingredient:Ingredient){ //Data obtained from shopping-edit.ts use refElements
     this.ingredients.push(ingredient);
     this.ingredientsChanged.emit(this.ingredients.slice());
   }

@@ -8,7 +8,7 @@ import { ShoppingListService } from '../shopping-list.service';
   styleUrl: './shopping-edit.component.css'
 })
 export class ShoppingEditComponent {
-  @ViewChild('nameInput',{static:false}) nameInputRef : ElementRef
+  @ViewChild('nameInput',{static:false}) nameInputRef : ElementRef //ViewChild allows access to child component (eg, for nameInput which is text input, it's child component is the name of the ingredient)
   @ViewChild('amountInput',{static:false}) amountInputRef : ElementRef
 
   constructor(private slService:ShoppingListService){}
@@ -16,8 +16,8 @@ export class ShoppingEditComponent {
 
   onAddItem(){
     const ingName=this.nameInputRef.nativeElement.value;
-    const ingAmount = this.amountInputRef.nativeElement.value;
+    const ingAmount = this.amountInputRef.nativeElement.value;  //setters
     const newIngredient=new Ingredient(ingName,ingAmount);
-    this.slService.addIngredient(newIngredient);
+    this.slService.addIngredient(newIngredient); //service used to add ingredient
   }
 }

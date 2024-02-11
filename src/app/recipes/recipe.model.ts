@@ -2,7 +2,7 @@
 
 import { Ingredient } from "../shared/ingredient.model";
 
-export class Recipe{
+export class Recipe{                 //Class that defines the variables of a Recipe
     public name : string;
     public description : string;
     public imagePath : string;

@@ -16,7 +16,7 @@ export class RecipesItemComponent {
   
 
   onSelected(){
-    this.recipeService.recipeSelected.emit(this.recipe);
+    this.recipeService.recipeSelected.emit(this.recipe); //Selected recipe item sent to recipeServices (very first line)
   }
 
 }

@@ -8,12 +8,12 @@ import { RecipeService } from '../recipe.service';
   styleUrl: './recipes-detail.component.css'
 })
 export class RecipesDetailComponent {
-  @Input() recipe : Recipe;
+  @Input() recipe : Recipe; //creates an instance of Recipe class from recipe.model.ts
 
-  constructor(private recipeService:RecipeService){}
+  constructor(private recipeService:RecipeService){} //creates an instance of RecipeService
 
   onAddToShoppingList(){
-    this.recipeService.addIngredientsToShoppingLIst(this.recipe.ingredients);
+    this.recipeService.addIngredientsToShoppingLIst(this.recipe.ingredients); //Uses function from recipeService to store ingredients onto shopping list
   }
 }
 

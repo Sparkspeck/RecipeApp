@@ -8,7 +8,7 @@ import { RecipeService } from '../recipe.service';
   styleUrl: './recipes-list.component.css'
 })
 export class RecipesListComponent implements OnInit {
-  recipes : Recipe[] = []; 
+  recipes : Recipe[] = []; //Initializes empty recipe array
 
 
 
@@ -17,7 +17,7 @@ export class RecipesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.recipes=this.recipeService.getRecipes();
+    this.recipes=this.recipeService.getRecipes(); //Recipe Service gets all available recipes and puts them in a list which is iterated through ngFor
   }
 
   
