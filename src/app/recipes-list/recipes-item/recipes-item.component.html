@@ -1,6 +1,6 @@
 <!--THIS COMPONENT TAG/SELECTOR IS USED IN RECIPE-LIST -->
-<a href="#" class="list-group-item clearfix" (click)="onSelected()">
-    <div class="pull-left">
+<a style="cursor: pointer;" [routerLink]="[index]" routerLinkActive="active" class="list-group-item clearfix"> <!--Since we use routers we have to remove all href as they lead to unprecedented path-->
+    <div class="pull-left">                                                                                    <!--Router link active helps style active element as well-->
         <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
         <p class="list-group-item-text">{{ recipe.description }}</p>
 

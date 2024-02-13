@@ -13,9 +13,9 @@
         <div class="btn-group" appDropdown>
             <button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe<span class="caret"></span></button>
             <ul class="dropdown-menu">
-                <li><a href="#" (click)="onAddToShoppingList()" style="cursor: pointer;">Add Ingredients To Shopping List</a></li>
-                <li><a href="#">Edit Ingredients</a></li>
-                <li><a href="#">Delete Ingredients</a></li>
+                <li><a (click)="onAddToShoppingList()" style="cursor: pointer;">Add Ingredients To Shopping List</a></li>
+                <li><a style="cursor: pointer;" (click)="onEditRecipe()" >Edit Ingredients</a></li>
+                <li><a style="cursor: pointer;" >Delete Ingredients</a></li>  <!--Since we use routers we have to remove all href as they lead to unprecedented path changes-->
             </ul>
         </div>
     </div>

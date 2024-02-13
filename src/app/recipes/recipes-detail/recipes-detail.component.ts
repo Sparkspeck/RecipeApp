@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component} from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { ActivatedRoute, Params, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipes-detail',
@@ -8,12 +9,28 @@ import { RecipeService } from '../recipe.service';
   styleUrl: './recipes-detail.component.css'
 })
 export class RecipesDetailComponent {
-  @Input() recipe : Recipe; //creates an instance of Recipe class from recipe.model.ts
+  recipe : Recipe; //creates an instance of Recipe class from recipe.model.ts
+  id:number;
 
-  constructor(private recipeService:RecipeService){} //creates an instance of RecipeService
+  constructor(private recipeService:RecipeService,
+              private route: ActivatedRoute,
+              private router:Router){} //creates an instance of RecipeService
+
+  ngOnInit(){
+    const id=this.route.params.subscribe(
+      (params:Params)=>{
+        this.id = +params['id'];
+        this.recipe = this.recipeService.getRecipe(this.id);
+      }
+    )
+  }
 
   onAddToShoppingList(){
     this.recipeService.addIngredientsToShoppingLIst(this.recipe.ingredients); //Uses function from recipeService to store ingredients onto shopping list
+  }
+
+  onEditRecipe(){
+    this.router.navigate(['edit'],{relativeTo:this.route}); //Moves to recipe edit component when edit is clicked in a recipe (forecfully changes route to recipe/id/new)
   }
 }
 

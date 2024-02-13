@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipes-list',
@@ -12,7 +13,9 @@ export class RecipesListComponent implements OnInit {
 
 
 
-  constructor(private recipeService:RecipeService){
+  constructor(private recipeService:RecipeService,
+              private router:Router,
+              private route:ActivatedRoute){
 
   }
 
@@ -20,5 +23,8 @@ export class RecipesListComponent implements OnInit {
     this.recipes=this.recipeService.getRecipes(); //Recipe Service gets all available recipes and puts them in a list which is iterated through ngFor
   }
 
+  onNewRecipe(){
+    this.router.navigate(['new'], {relativeTo:this.route}); //Changes path to new recipe component when button is clicked
+  }
   
 }
