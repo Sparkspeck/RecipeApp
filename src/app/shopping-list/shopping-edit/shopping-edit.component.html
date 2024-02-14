@@ -1,20 +1,21 @@
 <!--TOP PART OF SHOPPING LIST (DOES NOT INCLUDE THE LIST)-->
 <div class="row">
     <div class="col-xs-12">
-        <form>
+        <form (ngSubmit)="onAddItem(f)" #f="ngForm"> <!--Submission of form adds item(Add button since its only submit btn)-->
             <div class="row">
                 <div class="col-sm-5 form-group">
                     <label for="name">Name</label>
-                    <input type="text" id="name" class="form-control" #nameInput>
+                    <input type="text" id="name" class="form-control" name="name" ngModel required> <!--name is used in calling form values, like form.name etc-->
                 </div>
                 <div class="col-sm-2 form-group">
                     <label for="amount">Amount</label>
-                    <input type="number" id="amount" class="form-control" #amountInput>
+                    <input type="number" id="amount" class="form-control" name="amount" ngModel required min="1" style="width: 100px;">
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <button class="btn btn-success" type="submit" (click)="onAddItem()">Add</button>&nbsp;
+                    <button class="btn btn-success" type="submit" [disabled]="!f.valid" >{{ editMode ? 'Update' : 'Add' }}</button>&nbsp; <!--does not allow button to be clicked if required condition not met-->
+                    <!--Name of the button changes depending on whether the user is in Edit Mode or not-->
                     <button class="btn btn-danger" type="button">Delete</button>&nbsp;
                     <button class="btn btn-primary" type="button">Clear</button>
                 </div>

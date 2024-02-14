@@ -1,4 +1,5 @@
-import { EventEmitter, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
+
 import { Recipe } from "./recipe.model";
 import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shopping-list/shopping-list.service";
@@ -8,7 +9,7 @@ import { ShoppingListService } from "../shopping-list/shopping-list.service";
 
 export class RecipeService{
 
-    recipeSelected  = new EventEmitter<Recipe>(); //Stores selected Recipe from recipe list (obtained from recipe-item under recipe-list)
+   //Stores selected Recipe from recipe list (obtained from recipe-item under recipe-list)
 
     private recipes : Recipe[] = [          //This object has been defined in recipe.model.ts
     new Recipe('Burger','A juicy hamburger','https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg',[
