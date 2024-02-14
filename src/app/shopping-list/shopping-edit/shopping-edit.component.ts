@@ -47,6 +47,6 @@ export class ShoppingEditComponent {
   }
 
   ngOnDestroy(){
-    this.subscription.unsubscribe(); //cleans up subscription and prevents memory lea
+    this.subscription.unsubscribe(); //cleans up subscription and prevents memory leak
   }
 }
