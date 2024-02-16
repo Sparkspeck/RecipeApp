@@ -32,4 +32,10 @@ export class ShoppingListService{
       this.ingredients[index]=newIngredient;
       this.ingredientsChanged.next(this.ingredients.slice()); //re display the list
     }
+
+    deleteIngredient(index:number){
+      this.ingredients.splice(index,1);
+      this.ingredientsChanged.next(this.ingredients.slice());//update ingredients subject
+      
+    }
 }

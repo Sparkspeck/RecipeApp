@@ -13,7 +13,7 @@ import { NgFor } from '@angular/common';
   styleUrl: './shopping-edit.component.css'
 })
 export class ShoppingEditComponent {
-  @ViewChild('f') slForm: NgForm; //Selects form in html component so values of selected ingredients can be displayed on it
+  @ViewChild('f') slForm: NgForm; //Selects form in html component so values of selected ingredients can be displayed on it "f" was the name assigned to it in html file
   subscription :Subscription;
   editMode=false;
   editedItemIndex : number;
@@ -44,6 +44,18 @@ export class ShoppingEditComponent {
     }else{
     this.slService.addIngredient(newIngredient); //service used to add ingredient
     }
+    this.editMode=false; //to prevent being stuck on update
+    form.reset();
+  }
+
+  onClear(){
+    this.slForm.reset();
+    this.editMode=false;
+  }
+
+  onDelete(){
+    this.slService.deleteIngredient(this.editedItemIndex);
+    this.onClear();
   }
 
   ngOnDestroy(){

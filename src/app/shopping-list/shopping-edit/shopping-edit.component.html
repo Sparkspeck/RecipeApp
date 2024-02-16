@@ -16,8 +16,8 @@
                 <div class="col-xs-12">
                     <button class="btn btn-success" type="submit" [disabled]="!f.valid" >{{ editMode ? 'Update' : 'Add' }}</button>&nbsp; <!--does not allow button to be clicked if required condition not met-->
                     <!--Name of the button changes depending on whether the user is in Edit Mode or not-->
-                    <button class="btn btn-danger" type="button">Delete</button>&nbsp;
-                    <button class="btn btn-primary" type="button">Clear</button>
+                    <button class="btn btn-danger" type="button" (click)="onDelete()" *ngIf="editMode" >Delete</button>&nbsp; <!--Delete only shows if item is selected/in edit mode-->
+                    <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
                 </div>
             </div>
         </form>
