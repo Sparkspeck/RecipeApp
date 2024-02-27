@@ -12,9 +12,9 @@ export class RecipesDetailComponent {
   recipe : Recipe; //creates an instance of Recipe class from recipe.model.ts
   id:number;
 
-  constructor(private recipeService:RecipeService,
+  constructor(private recipeService:RecipeService,//creates an instance of RecipeService
               private route: ActivatedRoute,
-              private router:Router){} //creates an instance of RecipeService
+              private router:Router){} 
 
   ngOnInit(){
     const id=this.route.params.subscribe(
@@ -31,6 +31,11 @@ export class RecipesDetailComponent {
 
   onEditRecipe(){
     this.router.navigate(['edit'],{relativeTo:this.route}); //Moves to recipe edit component when edit is clicked in a recipe (forecfully changes route to recipe/id/new)
+  }
+
+  onDeleteRecipe(){
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
   }
 }
 

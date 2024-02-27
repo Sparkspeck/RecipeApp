@@ -8,7 +8,7 @@ import { Recipe } from '../../recipes/recipe.model';
   styleUrl: './recipes-item.component.css'
 })
 export class RecipesItemComponent {
-  @Input() recipe: Recipe;
+  @Input() recipe: Recipe; //Taken from recipe list (parent folder)
   @Input() index : number;
 
   ngOnInit(){
