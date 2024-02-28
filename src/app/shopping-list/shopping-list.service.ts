@@ -5,10 +5,7 @@ import { Ingredient } from "../shared/ingredient.model";
 export class ShoppingListService{
     ingredientsChanged = new Subject<Ingredient[]>(); //Used to display the shopping list
     startedEditing = new Subject<number>(); //Displays the selected ingredient in shopping list
-    private ingredients: Ingredient[]=[          //Created Ingedients model just like recipe model
-    new Ingredient('Apples',5),
-    new Ingredient('Tomatoes',10),
-  ];
+    private ingredients: Ingredient[]=[];        //Created Ingedients model just like recipe model
 
   getIngredients(){
     return this.ingredients.slice(); //get ingredients in entire ingredients array for display
