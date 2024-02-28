@@ -13,18 +13,8 @@ export class RecipeService{
   recipesChanged = new Subject<Recipe[]>(); //Reload the recipe list to reflect updates and newly added recipes
    //Stores selected Recipe from recipe list (obtained from recipe-item under recipe-list)
 
-    private recipes : Recipe[] = [          //This object has been defined in recipe.model.ts
-    new Recipe('Burger','A juicy hamburger','https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg',[
-      
-      new Ingredient("Buns",2),
-      new Ingredient("Meat",1)
-    ]),
-    new Recipe('Schnitzel','A tasty schnitzel','https://staticcookist.akamaized.net/wp-content/uploads/sites/22/2021/05/thumb-1200x675.jpg',[
-      new Ingredient("Meat",1),
-      new Ingredient("French Fries",20)
-    ])
-
-  ]; 
+    private recipes : Recipe[] = []          //This object has been defined in recipe.model.ts
+    
 
   constructor(private slService:ShoppingListService){}
 
@@ -54,4 +44,10 @@ export class RecipeService{
     this.recipes.splice(index,1);
     this.recipesChanged.next(this.recipes.slice());
   }
+
+  setRecipes(recipes : Recipe[]){
+    this.recipes=recipes;
+    this.recipesChanged.next(this.recipes.slice()); //Update recipe list when data loaded from db
+  }
+
 }
